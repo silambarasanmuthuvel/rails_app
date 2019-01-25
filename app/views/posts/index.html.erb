@@ -2,26 +2,31 @@
 
 <h1>Posts</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+     <th><h1>name</h1></th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.name %></td>
-        <td><%= link_to 'Show', topic_posts_path %></td>
-        <td><%#= link_to 'Edit', edit_topic_post_path %></td>
-        <td><%= link_to 'Destroy', topic_posts_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
+
+     <butto>
+      <td><h4><%= post.title %></h4></td>
+       <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
+       <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
+      <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
+       </h5></tr>
+   <% end %>
+
   </tbody>
 </table>
 
 <br>
+<%  if !params[:topic_id].blank? %>
+    <%= link_to 'New Post',  new_topic_post_path %></button>
 
-<%= link_to 'New Post',  new_topic_post_path %>
+<% end %>

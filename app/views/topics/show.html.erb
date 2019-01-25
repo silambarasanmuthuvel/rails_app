@@ -1,14 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
-</p>
+<h1>Posts</h1>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @topic.topic %>
-</p>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th><h1>name</h1></th>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @topic.posts.each do |post| %>
+
+
+    <butto>
+      <td><h4><%= post.title %></h4></td>
+      <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
+      <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
+      <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
+      </h5></tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<br>
+<%  if !params[:topic_id].blank? %>
+  <%= link_to 'New Post',  new_topic_post_path %></button>
+
+<% end %>

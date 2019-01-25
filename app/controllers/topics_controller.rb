@@ -10,6 +10,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic = Topic.find(params[:id])
+
   end
 
   # GET /topics/new
@@ -52,8 +54,9 @@ class TopicsController < ApplicationController
   end
 
   # DELETE /topics/1
-  # DELETE /topics/1.json
+  # DELETE /topics/1.jso
   def destroy
+   # @topic = Topic.find(params[:id])
     @topic.destroy
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }

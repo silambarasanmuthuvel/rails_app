@@ -1,9 +1,13 @@
-<%= form_for([@topic, @post]) do |form| %>
-  
+<%= form_for ([@topic,@post]) do |form| %>
+
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
   </div>
 
   <div class="actions">
