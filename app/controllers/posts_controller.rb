@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   def index
     # @topic = Topic.find(params[:topic_id])
     if params[:topic_id].blank?
-    @posts = Post.all
+    @posts = Post.all.paginate(page: params[:page], per_page: 5)
     else
-      @posts = @topic.posts.all
+      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5)
     end
     end
 

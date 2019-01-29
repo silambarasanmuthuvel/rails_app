@@ -15,10 +15,11 @@
 
 
      <butto>
-      <td><h4><%= post.title %></h4></td>
+      <td><h4><%= post.title %> (<%= post.topic .name %>)</h4></td>
        <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
        <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
       <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
+       <td><%= link_to 'comments', topic_post_comments_path(post.topic_id,post) , class: "btn btn-primary" %></td>
        </h5></tr>
    <% end %>
 
@@ -30,3 +31,4 @@
     <%= link_to 'New Post',  new_topic_post_path %></button>
 
 <% end %>
+<%= will_paginate @posts,renderer: BootstrapPagination::Rails %>
