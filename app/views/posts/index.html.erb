@@ -28,7 +28,7 @@
 
 <br>
 <%  if !params[:topic_id].blank? %>
-    <%= link_to 'New Post',  new_topic_post_path %></button>
+    <%= link_to 'New_Post',  new_topic_post_path %></button>
 
 <% end %>
 <%= will_paginate @posts,renderer: BootstrapPagination::Rails %>
