@@ -12,9 +12,12 @@ class CommentsController < ApplicationController
   # GET /comments/1.jso
   def show
     @topic = Topic.find(params[:topic_id])
-    #   puts @topic.posts
     @post = @topic.posts.find(params[:post_id])
-    @comment=@post.comments.find(params[:id])
+    if params[:post_id].blank?
+      @comment=@post.all
+    else
+      @comment=@post.comments.find(params[:id])
+    end
   end
 
   # GET /comments/new
@@ -24,8 +27,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-      @comment=@post.comments.find(params[:id])
-      puts @comment
+    @comment=@post.comments.find(params[:id])
+    puts @comment
   end
 
   # POST /comments
@@ -35,7 +38,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to topic_post_comments_path, notice: 'Comment was successfully created.' }
+        format.html { redirect_to topic_post_path(params[:topic_id],params[:post_id]), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -62,25 +65,27 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment=@post.comments.find(params[:id])
-    @comment.destroy
     respond_to do |format|
-      format.html { redirect_to topic_post_comments_path, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+      if  @comment.destroy
+        format.html { redirect_to topic_post_path(params[:topic_id],params[:post_id]), notice: 'Comment was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @topic = Topic.find(params[:topic_id])
-      #   puts @topic.posts
-      @post = @topic.posts.find(params[:post_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+  end
   def set_comment
     @comment = @post.comments.find(params[:id])
   end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def comment_params
-      params.require(:comment).permit(:commenter,:body)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def comment_params
+    params.require(:comment).permit(:commenter,:body)
+  end
 end

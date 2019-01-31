@@ -10,8 +10,6 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @topic = Topic.find(params[:id])
-
   end
 
   # GET /topics/new
@@ -56,22 +54,25 @@ class TopicsController < ApplicationController
   # DELETE /topics/1
   # DELETE /topics/1.jso
   def destroy
-   # @topic = Topic.find(params[:id])
-    @topic.destroy
+    # @topic = Topic.find(params[:id])
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
-      format.json { head :no_content }
+      if @topic.destroy
+        format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.json { render json: @topic.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_topic
-      @topic = Topic.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_topic
+    @topic = Topic.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def topic_params
-      params.require(:topic).permit(:name, :topic)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def topic_params
+    params.require(:topic).permit(:name, :topic)
+  end
 end

@@ -8,7 +8,7 @@ RSpec.describe Comment, type: :model do
   }
 
   subject{ described_class.create(commenter:"sadas",body:"sdsa",post_id:1) }
-  describe "dasdas" do
+  describe "subject to be valid" do
     it "vaild with the comment" do
       expect(subject).to be_valid
     end

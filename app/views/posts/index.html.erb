@@ -14,7 +14,7 @@
     <% @posts.each do |post| %>
 
 
-     <butto>
+<!--     <button>-->
       <td><h4><%= post.title %> (<%= post.topic .name %>)</h4></td>
        <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
        <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>

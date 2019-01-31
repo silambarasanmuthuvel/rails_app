@@ -1,5 +1,5 @@
 <div class="container">
-  <div class=""row" >
+  <div class="row">
   <div class="col-md-12" >
 <p id="notice"><%= notice %></p>
 
@@ -36,9 +36,9 @@
     <tr>
       <td><%= comment.commenter %></td>
       <td><%= comment.body %></td>
-<!--      <td><%#= link_to 'Show', topic_post_comments_path%></td>-->
-<!--      <td><%#= link_to 'Edit', edit_topic_post_comment_path(params[:topic_id],params[:post_id],comment) %></td>--->
-<!--      <td><%#= link_to 'Destroy', topic_post_comment_path(params[:topic_id],params[:post_id],comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
+      <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
+      <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>
@@ -46,4 +46,18 @@
 
 <br>
 
+  <%= render 'ratings/form' , rating:@rating %>
+
+  <strong>Rating:</strong>
+<%# @rating.order(:rating).each do |f| %>
+  <%#= f.rating %>
+  <%# end %>
+
+  <%@group_rating.each do |k,c| %>
+    <div class="d-inline rating-block" ><%= k%>- star <%= c %></div>
+  <% end %>
+
+
 <%#= link_to 'New Comment', new_topic_post_comment_path %>
+  <%= render 'comments/form' , comment:@comment %>
+</div>
