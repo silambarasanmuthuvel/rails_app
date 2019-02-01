@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:new,:show, :edit, :update, :destroy,:index, :create]
-  before_action :set_comment, only: [:show, :edit, :update]
+  before_action :set_post
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.jso
   def show
-    @topic = Topic.find(params[:topic_id])
-    @post = @topic.posts.find(params[:post_id])
+
     if params[:post_id].blank?
       @comment=@post.all
     else
@@ -64,7 +63,6 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment=@post.comments.find(params[:id])
     respond_to do |format|
       if  @comment.destroy
         format.html { redirect_to topic_post_path(params[:topic_id],params[:post_id]), notice: 'Comment was successfully destroyed.' }

@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    #   puts @topic.posts
     @comments =@post.comments.all
     @comment = @post.comments.new
     @rating = @post.ratings.all
@@ -31,23 +30,22 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    puts @post
   end
 
-  # POST /posts
-  # POST /posts.json
   def create
     @post = @topic.posts.create(post_params)
     if @post.save
       redirect_to topic_posts_path
     else
-      format.html { render :edit }
-      format.json { render json: @post.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { render :new, notice:"fgfhgf" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json0
+  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -78,7 +76,7 @@ class PostsController < ApplicationController
 
   private
   def set_topic
-    if !params[:topic_id].blank?
+    unless params[:topic_id].blank?
       @topic = Topic.find(params[:topic_id])
     end
   end
@@ -90,7 +88,7 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title ,:body)
+    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag] )
   end
 end
 

@@ -1,4 +1,4 @@
-<%= form_for ([@topic,@post]) do |form| %>
+<%= form_for [@topic,@post], html: { multipart: true } do |form| %>
 
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -11,7 +11,10 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -20,6 +23,12 @@
     <%= form.label :body %>
     <%= form.text_area :body %>
   </div>
+
+
+  <%= form.fields_for :tags ,@post.tags.build do |ff| %>
+    <%= ff.label :tag %>
+    <%= ff.text_area :tag %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

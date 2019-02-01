@@ -1,50 +1,56 @@
 <div class="container">
   <div class="row">
-  <div class="col-md-12" >
-<p id="notice"><%= notice %></p>
+    <div class="col-md-12" >
+      <p id="notice"><%= notice %></p>
 
-<p>
- <h1> <strong>Name:</strong></h1><h3><%= @post.title %></h3>
-</p>
-<%= @post.body %>
-</p>
-
-
-<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_topic_post_path%> </button>
-
-<button type="button" class="btn btn-warning"><%= link_to 'Back', topic_posts_path %></button>
-</div>
-</div>
+      <p>
+      <h1> <strong>Name:</strong></h1><h3><%= @post.title %></h3>
+      </p>
+      <%= @post.body %>
+      </p>
 
 
-<p id="notice"><%= notice %></p>
+      <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_topic_post_path%> </button>
 
-<h1>Comments</h1>
+      <button type="button" class="btn btn-warning"><%= link_to 'Back', topic_posts_path %></button>
+    </div>
+  </div>
 
-<table>
-  <thead>
-  <tr>
-    <th>Comment</th>
-    <th colspan="3"></th>
-    <th>body</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
 
-  <tbody>
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.commenter %></td>
-      <td><%= comment.body %></td>
-      <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
-      <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
-      <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+  <p id="notice"><%= notice %></p>
+  <%= image_tag @post.image.url(:medium) %>
+  <br>
+  <strong>tag</strong><br>
+  <% @post.tags.each do |tag|%>
+    <p><%= tag.tag %><br></p>
   <% end %>
-  </tbody>
-</table>
 
-<br>
+  <h1>Comments</h1>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Comment</th>
+      <th colspan="3"></th>
+      <th>body</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.commenter %></td>
+        <td><%= comment.body %></td>
+        <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
+        <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
+        <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
 
   <%= render 'ratings/form' , rating:@rating %>
 
@@ -56,8 +62,14 @@
   <%@group_rating.each do |k,c| %>
     <div class="d-inline rating-block" ><%= k%>- star <%= c %></div>
   <% end %>
-
+  <br>
+  <strong>AVG Rating:</strong>
+  <%= @post.ratings.average(:rating) %>
 
 <%#= link_to 'New Comment', new_topic_post_comment_path %>
+
   <%= render 'comments/form' , comment:@comment %>
+  <strong>
+  <%=@post.comments.count %>
+    comments</strong>
 </div>

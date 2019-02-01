@@ -52,7 +52,7 @@ class TopicsController < ApplicationController
   end
 
   # DELETE /topics/1
-  # DELETE /topics/1.jso
+  # DELETE /topics/1.json
   def destroy
     # @topic = Topic.find(params[:id])
     respond_to do |format|
