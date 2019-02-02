@@ -22,7 +22,8 @@
   <br>
   <strong>tag</strong><br>
   <% @post.tags.each do |tag|%>
-    <p><%= tag.tag %><br></p>
+<!--    <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
+    <%= tag.tag %><br>
   <% end %>
 
   <h1>Comments</h1>

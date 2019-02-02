@@ -43,7 +43,6 @@
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.3, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.2, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="byebug (v10.0.2, RVM: ruby-2.6.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capybara (v3.12.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="childprocess (v0.9.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="chromedriver-helper (v2.1.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v4.2.2, RVM: ruby-2.6.0) [gem]" level="application" />
@@ -53,9 +52,7 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.4, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.8.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.7.0, RVM: ruby-2.6.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.10.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.6.0) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="i18n (v1.5.2, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.8.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.1.5, RVM: ruby-2.6.0) [gem]" level="application" />
