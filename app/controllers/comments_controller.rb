@@ -4,16 +4,11 @@ class CommentsController < ApplicationController
 
 
   def index
-    @comments =@post.comments.all
+    @comments =@post.comments.all.includes(:user)
   end
 
   def show
 
-    if params[:post_id].blank?
-      @comment=@post.all
-    else
-      @comment=@post.comments.find(params[:id])
-    end
   end
 
   def new
@@ -21,8 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment=@post.comments.find(params[:id])
-    puts @comment
   end
 
   def create

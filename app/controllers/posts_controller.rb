@@ -1,18 +1,18 @@
 class PostsController < ApplicationController
 
-  before_action :set_topic
+  before_action :set_topic, except: :index
   before_action :set_post, only: [:show, :edit, :destroy, :update]
 
   def index
     if params[:topic_id].blank?
-      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic)
+      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
     else
       @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5)
     end
   end
 
   def show
-    @comments =@post.comments.all
+    @comments =@post.comments.all.includes(:user)
     @comment = @post.comments.new
     @rating = @post.ratings.all
     @group_rating = @rating.order(:rating).group(:rating).count
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params.merge(user_id: current_user.id))
         format.html { redirect_to topic_posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
