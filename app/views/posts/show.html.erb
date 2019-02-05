@@ -9,9 +9,9 @@
       <%= @post.body %>
       </p>
 
-
-      <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_topic_post_path%> </button>
-
+      <% if can? :update, @post %>
+        <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_topic_post_path%> </button>
+      <% end %>
       <button type="button" class="btn btn-warning"><%= link_to 'Back', topic_posts_path %></button>
     </div>
   </div>
@@ -22,7 +22,7 @@
   <br>
   <strong>tag</strong><br>
   <% @post.tags.each do |tag|%>
-<!--    <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
+    <!--    <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
     <%= tag.tag %><br>
   <% end %>
 
@@ -44,9 +44,11 @@
         <td><%= comment.commenter %></td>
         <td><%= comment.body %></td>
         <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
+        <% if can? :update , comment %>
         <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
         <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% end %>
+          </tr>
     <% end %>
     </tbody>
   </table>
@@ -71,6 +73,6 @@
 
   <%= render 'comments/form' , comment:@comment %>
   <strong>
-  <%=@post.comments.count %>
+    <%=@post.comments.count %>
     comments</strong>
 </div>
