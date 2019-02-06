@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_topic, except: :index
+  before_action :set_topic
   before_action :set_post, only: [:show, :edit, :destroy, :update]
   # before_action :authorize_resource, only: [:update, :destroy, :edit ]
   load_and_authorize_resource
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if params[:topic_id].blank?
       @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
     else
-      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5)
+      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5).includes(:user)
     end
   end
 
@@ -30,16 +30,22 @@ class PostsController < ApplicationController
   def create
     @post = @topic.posts.create(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to topic_posts_path
-    else
-      respond_to do |format|
-        format.html { render :new, notice:"fgfhgf" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to topic_posts_path }
+        format.js
+      else
+          format.html { render :new, notice:"fgfhgf" }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  def readstatus
+    if not @post.users.include?(current_user)
+      @post.users << current_user
+    end
+  end
   def update
     respond_to do |format|
       if @post.update(post_params.merge(user_id: current_user.id))

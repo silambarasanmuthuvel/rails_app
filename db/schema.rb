@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_133423) do
+ActiveRecord::Schema.define(version: 2019_02_06_100850) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(version: 2019_02_04_133423) do
   create_table "posts_tags", id: false, force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "tag_id", null: false
+  end
+
+  create_table "posts_users", id: false, force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "ratings", force: :cascade do |t|

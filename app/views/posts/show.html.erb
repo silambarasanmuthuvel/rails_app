@@ -18,7 +18,7 @@
 
 
   <p id="notice"><%= notice %></p>
-  <%= image_tag @post.image.url(:medium) %>
+  <%#= image_tag @post.image.url %>
   <br>
   <strong>tag</strong><br>
   <% @post.tags.each do |tag|%>
@@ -58,9 +58,6 @@
   <%= render 'ratings/form' , rating:@rating %>
 
   <strong>Rating:</strong>
-<%# @rating.order(:rating).each do |f| %>
-  <%#= f.rating %>
-  <%# end %>
 
   <%@group_rating.each do |k,c| %>
     <div class="d-inline rating-block" ><%= k%>- star <%= c %></div>
@@ -76,3 +73,15 @@
     <%=@post.comments.count %>
     comments</strong>
 </div>
+
+<%= hidden_field_tag :topic_id, params[:topic_id] %>
+<%= hidden_field_tag :post_id, params[:id] %>
+
+<script>
+    $( document ).ready(function() {
+        $.ajax({
+            method: "GET",
+            url: '/topics/' + $('#topic_id').val() + '/posts/' + $('#post_id').val() + '/readstatus'
+        })
+    });
+</script>

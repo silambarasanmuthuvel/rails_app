@@ -12,10 +12,16 @@
 
   <tbody>
     <% @posts.each do |post| %>
-
-
 <!--     <button>-->
-      <td><h4><%= post.title %> (<%= post.topic .name %>)</h4></td>
+
+
+
+      <td><h4><%= post.title %> (<%= post.topic .name %>)</h4>
+        <% if current_user.posts.include?(post) %>
+          <p style="color:lawngreen;">read </p>
+        <% else %>
+          <p style="color:orangered;">unread</p>
+        <% end %></td>
        <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
     <% if can? :update , post %>
        <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
@@ -32,7 +38,7 @@
 
 <br>
 <%  if !params[:topic_id].blank? %>
-    <%= link_to 'New_Post',  new_topic_post_path %></button>
+    <%= link_to 'New_Post',  new_topic_post_path(params[:topic_id]) , remote: true ,id: "new_link" %></button>
 
 <% end %>
 <%= will_paginate @posts,renderer: BootstrapPagination::Rails %>

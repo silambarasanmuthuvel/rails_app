@@ -1,30 +1,41 @@
 <p id="notice"><%= notice %></p>
+<% if @topic.posts.present? %>
+      <h1>Posts</h1>
 
-<h1>Posts</h1>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th><h1>name</h1></th>
 
-<table class="table table-bordered">
-  <thead>
-  <tr>
-    <th><h1>name</h1></th>
+        </tr>
+        </thead>
 
-  </tr>
-  </thead>
+        <tbody>
+        <% @post.each do |post| %>
+           <tr> <td><h4><%= post.title %></h4>
+              <p><% if current_user.posts.include?(post) %>
+                 <span style="color:lawngreen;">read </span>
+              <% else %>
+                <span style="color:orangered;">unread</span>
+              <% end %></p>
+                </td>
+            <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
+          <% if can? :update , post %>
+            <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
+            <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
+          </h5></tr>
+          <% end %>
+        <% end %>
 
-  <tbody>
-  <% @post.each do |post| %>
-      <td><h4><%= post.title %></h4></td>
-      <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
-    <% if can? :update , post %>
-      <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
-      <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
-      <% end %></h5></tr>
+        </tbody>
+      </table>
+  <% else %>
+       <h1> no post in the topic </h1>
   <% end %>
-
-  </tbody>
-</table>
 
 <br>
 <%  if !params[:topic_id].blank? %>
   <%= link_to 'New Post',  new_topic_post_path %></button>
 
 <% end %>
+<%= link_to 'Back',  topics_path , class: "btn btn-primary"%>
