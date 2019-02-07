@@ -1,12 +1,38 @@
-<%= form_for([@topic, @post]) do |form| %>
-  
+<%= form_for [@topic,@post], html: { multipart: true } do |form| %>
 
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this topic from being saved:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+
+  <%= form.fields_for :tags ,@post.tags.build do |ff| %>
+    <%= ff.label :tag %>
+    <%= ff.text_area :tag %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
+

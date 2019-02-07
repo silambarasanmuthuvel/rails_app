@@ -1,0 +1,20 @@
+<%= form_with url:topic_post_ratings_path(params[:topic_id],params[:post_id]|| params[:id]) do |f| %>
+  <%# (1..5).each do |rating| %>
+
+
+  <%= f.radio_button :rating, 1 %>
+
+  <%= f.radio_button :rating, 2 %>
+
+  <%= f.radio_button :rating, 3 %>
+
+  <%= f.radio_button :rating, 4 %>
+
+  <%= f.radio_button :rating, 5 %>
+  <%#= rating %>
+
+
+  <%# end %>
+
+  <%= f.submit('Rate') %>
+<% end %>
