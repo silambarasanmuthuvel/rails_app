@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_post
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
 
   def index
@@ -19,7 +20,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.new(comment_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @comment.save
@@ -34,7 +35,7 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment.update(comment_params.merge(user_id: current_user.id))
         format.html { redirect_to topic_post_path(params[:topic_id],params[:post_id]), notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else

@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
   end
 
   def show
+    @post = @topic.posts.includes(:user)
   end
 
 
