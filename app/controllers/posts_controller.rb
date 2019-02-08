@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_topic
   before_action :set_post, only: [:show, :edit, :destroy, :update]
   # before_action :authorize_resource, only: [:update, :destroy, :edit ]
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:read_status , :index , :show]
+
   def index
     if params[:topic_id].blank?
       @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
@@ -28,22 +29,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = @topic.posts.create(post_params)
-    @post.user_id = current_user.id
+    @post = @topic.posts.create(post_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @post.save
         format.html { redirect_to topic_posts_path }
         format.js
       else
-          format.html { render :new, notice:"fgfhgf" }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { render :new, notice:"fgfhgf" }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
   def readstatus
-    if not @post.users.include?(current_user)
-      @post.users << current_user
+    respond_to do |format|
+      unless @post.users.include?(current_user)
+        @post.users << current_user
+      end
+      format.js
     end
   end
   def update
