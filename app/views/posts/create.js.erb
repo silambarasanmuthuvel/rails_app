@@ -1,0 +1,8 @@
+$('#error_explanation').remove();
+<% if not @post.errors.any? %>
+  $('#new_post').remove();
+  $("#new_link").show();
+  alert("post created sucessfully");
+<% else %>
+  $('#error-page').prepend("<%= j render(partial: 'layouts/error_display', locals: { error: @post }) %>")
+<% end %>
