@@ -18,7 +18,7 @@
 
 
   <p id="notice"><%= notice %></p>
-  <%#= image_tag @post.image.url %>
+  <%= image_tag @post.image.url(:medium) %>
   <br>
   <strong>tag</strong><br>
   <% @post.tags.each do |tag|%>
@@ -82,6 +82,7 @@
         $.ajax({
             method: "GET",
             url: '/topics/' + $('#topic_id').val() + '/posts/' + $('#post_id').val() + '/readstatus'
+
         })
     });
 </script>

@@ -2,43 +2,46 @@
 
 <h1>Posts</h1>
 
+<div id="error-page"></div>
+
+<%  if !params[:topic_id].blank? %>
+  <%= link_to 'New_Post',  new_topic_post_path(params[:topic_id]) , remote: true ,id: "new_link",  class: "btn btn-danger" %>
+
+<% end %>
+
 <table class="table table-bordered">
   <thead>
-    <tr>
-     <th><h1>name</h1></th>
+  <tr>
+    <th><h1>name</h1></th>
 
-    </tr>
+  </tr>
   </thead>
 
   <tbody>
-    <% @posts.each do |post| %>
-<!--     <button>-->
+  <% @posts.each do |post| %>
+    <!--     <button>-->
 
 
 
-      <td><h4><%= post.title %> (<%= post.topic .name %>)</h4>
-        <% if current_user.posts.include?(post) %>
-          <p style="color:lawngreen;">read </p>
-        <% else %>
-          <p style="color:orangered;">unread</p>
-        <% end %></td>
-       <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
+    <td><h4><%= post.title %> (<%= post.topic .name %>)</h4>
+      <% if current_user.posts.include?(post) %>
+        <p style="color:lawngreen;">read </p>
+      <% else %>
+        <p style="color:orangered;">unread</p>
+      <% end %></td>
+    <td><%= link_to 'Show', topic_post_path(post.topic_id,post) , class: "btn btn-success" %></td>
     <% if can? :update , post %>
-       <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
-      <% end %>
+      <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
+    <% end %>
     <% if can? :destroy , post %>
       <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-      <td><%= link_to 'comments', topic_post_comments_path(post.topic_id,post) , class: "btn btn-primary" %></td>
-       </h5></tr>
-   <% end %>
+    <% end %>
+    <td><%= link_to 'comments', topic_post_comments_path(post.topic_id,post) , class: "btn btn-primary" %></td>
+    </h5></tr>
+  <% end %>
 
   </tbody>
 </table>
 
 <br>
-<%  if !params[:topic_id].blank? %>
-    <%= link_to 'New_Post',  new_topic_post_path(params[:topic_id]) , remote: true ,id: "new_link" %></button>
-
-<% end %>
 <%= will_paginate @posts,renderer: BootstrapPagination::Rails %>
