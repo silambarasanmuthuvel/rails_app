@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!,expect: [:authenticate]
+  before_action :authenticate_user!
+
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
       basic_auth=User.find_by_email(username)
@@ -11,6 +12,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 end
 

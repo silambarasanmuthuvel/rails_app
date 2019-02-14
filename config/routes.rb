@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root "topics#index"
   get '/topics/:topic_id/posts/:id/readstatus' => 'posts#readstatus'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  #header for sign in
   get "/user", to: "application#authenticate"
 
 end

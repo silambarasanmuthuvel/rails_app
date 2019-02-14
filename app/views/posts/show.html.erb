@@ -45,6 +45,7 @@
         <td><%= comment.commenter %></td>
         <td><%= comment.body %></td>
         <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
+       <td>  <%= render 'ratings/form' %> </td>
         <% if can? :update , comment %>
         <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
         <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>

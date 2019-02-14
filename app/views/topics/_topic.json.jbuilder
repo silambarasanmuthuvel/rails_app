@@ -1,2 +1,2 @@
-json.extract! topic, :id, :name, :topic, :created_at, :updated_at
+json.extract! topic, :id, :name
 json.url topic_url(topic, format: :json)

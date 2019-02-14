@@ -2,19 +2,20 @@
   <%# (1..5).each do |rating| %>
 
 
-  <%= f.radio_button :rating, 1 %>
+  <%= f.radio_button :rating, 1 %>1
 
-  <%= f.radio_button :rating, 2 %>
+  <%= f.radio_button :rating, 2 %>2
 
-  <%= f.radio_button :rating, 3 %>
+  <%= f.radio_button :rating, 3 %>3
 
-  <%= f.radio_button :rating, 4 %>
+  <%= f.radio_button :rating, 4 %>4
 
-  <%= f.radio_button :rating, 5 %>
+  <%= f.radio_button :rating, 5 %>5
   <%#= rating %>
-
+  <%#= UserCommentRating.create!(user_id :current_user , comment_id :Comment.last , rating_id  :Rating.last) %>
 
   <%# end %>
+
 
   <%= f.submit('Rate') %>
 <% end %>
