@@ -22,6 +22,7 @@
   <%= image_tag @post.image.url(:medium) %>
   <br>
   <strong>tag</strong><br>
+  <%#= @post.tags.inspect %>
   <% @post.tags.each do |tag|%>
 <!--      <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
     <%= tag.tag %><br>
