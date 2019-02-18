@@ -26,3 +26,4 @@
 <br>
   <%= link_to 'New Topic', new_topic_path , remote: true ,id: "new_topic",class: 'btn btn-secondary'%>
 
+<%= will_paginate @topics,renderer: BootstrapPagination::Rails %>

@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-
+    @ucr=UserCommentRating.where(comment_id: params[:id]).includes(:user ,:rating)
   end
 
   def new

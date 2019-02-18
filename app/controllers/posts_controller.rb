@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments =@post.comments.all.includes(:user)
+    @comments =@post.comments.all.eager_load(:user)
     @comment = @post.comments.new
     @rating = @post.ratings.all
     @group_rating = @rating.order(:rating).group(:rating).count
@@ -88,7 +88,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag] )
+    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag], tags: :tag )
   end
 end
 

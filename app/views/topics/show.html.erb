@@ -29,6 +29,7 @@
 
         </tbody>
       </table>
+  <%#= #will_paginate @topic.posts,renderer: BootstrapPagination::Rails %>
   <% else %>
        <h1> no post in the topic </h1>
   <% end %>
