@@ -1,0 +1,8 @@
+<nav class="navbar navbar">
+  <a class="navbar-brand" href="/">Select post</a>
+  <%= form_with url:filter_topics_path ,remote: true, method: 'get' do |f|%>
+    <label> from_date </label> <%= date_field_tag(:date_from ,Date.yesterday,class:"date") %>
+    <label> to_date </label> <%= date_field_tag(:date_to ,Date.today,class:"date") %>
+    <%= f.submit "show details" %>
+  <% end %>
+</nav>
