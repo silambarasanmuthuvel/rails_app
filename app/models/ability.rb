@@ -25,6 +25,7 @@ class Ability
         comment.user == user
       end
       can :create , Comment
+      can :manage, Topic
 
 
     #
