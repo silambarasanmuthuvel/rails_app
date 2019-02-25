@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :email,presence:true
+  validates :password,presence:true
   has_many :comments
   has_many :created_posts , class_name: 'Post'
   has_and_belongs_to_many :posts

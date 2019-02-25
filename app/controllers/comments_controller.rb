@@ -5,11 +5,11 @@ class CommentsController < ApplicationController
 
 
   def index
-    @comments =@post.comments.all.includes(:user)
+    @comments =@post.comments.all.eager_load(:user)
   end
 
   def show
-    @ucr=UserCommentRating.where(comment_id: params[:id]).includes(:user ,:rating)
+    @ucr=UserCommentRating.where(comment_id: params[:id]).eager_load(:user ,:rating)
   end
 
   def new

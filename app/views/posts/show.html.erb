@@ -24,8 +24,9 @@
   <strong>tag</strong><br>
   <% @post.tags.each do |tag|%>
 <!--      <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
-    <%= tag.tag %><br>
+    <%= tag.tag %>
   <% end %>
+
   <%= render 'ratings/form' , rating:@rating %>
 
   <strong>Rating:</strong>
