@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
   before{@topic = Topic.create!(name:"sam")
-  @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal")
-  @comment=@post.comments.create!(commenter: "sam" ,body: "good boy")
+  @user = User.create!(email:"abc@gmail.com",password:"123456")
+  sign_in @user
+  @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal",topic_id:1,user_id: @user.id)
+  @comment=@post.comments.create!(commenter: "sam" ,body: "good boy",user_id: @user.id)
+
   }
   context 'GET #index' do
     it 'returns sucess ' do

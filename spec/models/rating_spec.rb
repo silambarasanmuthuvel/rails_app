@@ -9,9 +9,13 @@ RSpec.describe Rating, type: :model do
   }
   subject{ described_class.create(rating:4,post_id:1) }
 
-  describe "subject to be valid" do
-    it "vaild with the comment" do
+  describe "rating to be valid" do
+    it "vaild " do
       expect(subject).to be_valid
+    end
+    it "Invaild without rating" do
+      subject.rating =nil
+      expect(subject).not_to be_valid
     end
   end
 end

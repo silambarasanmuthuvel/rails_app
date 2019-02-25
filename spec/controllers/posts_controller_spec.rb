@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  before{@topic = Topic.create!(name:"sam")
-      @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal")
+  before{
+    @user = User.create!(email:"abc@gmail.com",password:"123456")
+    sign_in @user
+    @topic = Topic.create!(name:"sam")
+
+    @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal",topic_id:1,user_id: @user.id)
+
   }
   context 'GET #index' do
     it 'returns sucess ' do
@@ -16,6 +21,11 @@ RSpec.describe PostsController, type: :controller do
     it 'returns sucess ' do
       get :new ,params: {id:@post.to_param,topic_id:@topic.id}
       expect(response).to be_successful
+    end
+
+    it "the name must be with proper credentials" do
+      post = @topic.posts.create!(title: "by" ,body: "bay of bengal",topic_id:1,user_id: @user.id)
+      expect(post.errors[:title]).to include("title should be of length 3 to 20 character")
     end
   end
 
