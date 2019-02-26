@@ -26,7 +26,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created }
+        format.json { render json: { topic: {id: @topic.id, name:@topic.name } }, status: :ok }
       else
         format.html { render :new }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
@@ -50,7 +50,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.destroy
         format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
-        format.json { head :no_content }
+        format.json {render json: {"message": "Topic was successfully destroyed."} }
       else
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end

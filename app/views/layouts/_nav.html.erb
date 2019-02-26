@@ -7,9 +7,79 @@
       <% end %>
       <% if user_signed_in? %>
         <%= link_to "Log out",destroy_user_session_path  , method: "delete",class:"btn btn-primary" %>
+        <%#= link_to "Change your password", edit_user_registration_path  ,class:"btn btn-danger"%>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h2>Edit <%= current_user.to_s.humanize %></h2>
+
+                <%= form_for(current_user, as: current_user, url: registration_path(current_user), html: { method: :put }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: current_user %>
+
+                  <div class="field">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  </div>
+
+                  <%# if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<!--                    <div>Currently waiting confirmation for: <%#= resource.unconfirmed_email %></div>-->
+                  <%# end %>
+
+                  <div class="field">
+                    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                    <%= f.password_field :password, autocomplete: "new-password" %>
+                    <% if @minimum_password_length %>
+                      <br />
+                      <em><%= @minimum_password_length %> characters minimum</em>
+                    <% end %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                    <%= f.password_field :current_password, autocomplete: "current-password" %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "Update" %>
+                  </div>
+                <% end %>
+
+                <h3>Cancel my account</h3>
+
+<!--                <p>Unhappy? <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>-->
+
+                <%= link_to "Back", :back %>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <% else %>
         <%= link_to "Log in ", new_user_session_path,class:"btn btn-primary" %>
-      <% end %>
+
+    <% end %>
     </div>
   </form>
 </nav>
