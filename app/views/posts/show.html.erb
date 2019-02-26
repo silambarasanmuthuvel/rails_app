@@ -22,10 +22,21 @@
   <%= image_tag @post.image.url(:medium) %>
   <br>
   <strong>tag</strong><br>
+  <%#= @post.tags.inspect %>
   <% @post.tags.each do |tag|%>
-    <!--    <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
+<!--      <p><%#= tag.checkbox :tag ,tag.tag %><br></p>-->
     <%= tag.tag %><br>
   <% end %>
+  <%= render 'ratings/form' , rating:@rating %>
+
+  <strong>Rating:</strong>
+
+  <%@group_rating.each do |k,c| %>
+    <div class="d-inline rating-block" ><%= k%>- star <%= c %></div>
+  <% end %>
+  <br>
+  <strong>AVG Rating:</strong>
+  <%= @post.ratings.average(:rating) %>
 
   <h1>Comments</h1>
 
@@ -45,7 +56,29 @@
         <td><%= comment.commenter %></td>
         <td><%= comment.body %></td>
         <td><%= link_to 'Show', topic_post_comment_path(@topic,@post,comment) %></td>
-       <td>  <%= render 'ratings/form' %> </td>
+<!--       <td>  <%#= render 'ratings/form' %> </td>-->
+        <td><%= form_with url:topic_post_ratings_path(params[:topic_id],params[:post_id]|| params[:id]) do |f| %>
+            <%# (1..5).each do |rating| %>
+
+            <%= hidden_field_tag 'com', comment.id %>
+            <%= f.radio_button :rating, 1 %>1
+
+            <%= f.radio_button :rating, 2 %>2
+
+            <%= f.radio_button :rating, 3 %>3
+
+            <%= f.radio_button :rating, 4 %>4
+
+            <%= f.radio_button :rating, 5 %>5
+
+            <%#= rating %>
+            <%#= UserCommentRating.create!(user_id :current_user , comment_id :Comment.last , rating_id  :Rating.last) %>
+
+            <%# end %>
+
+
+            <%= f.submit('Rate') %>
+          <% end %></td>
         <% if can? :update , comment %>
         <td><%= link_to 'Edit', edit_topic_post_comment_path(@topic,@post,comment) %></td>-
         <td><%= link_to 'Destroy', topic_post_comment_path(@topic,@post,comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -56,17 +89,8 @@
   </table>
 
   <br>
+.
 
-  <%= render 'ratings/form' , rating:@rating %>
-
-  <strong>Rating:</strong>
-
-  <%@group_rating.each do |k,c| %>
-    <div class="d-inline rating-block" ><%= k%>- star <%= c %></div>
-  <% end %>
-  <br>
-  <strong>AVG Rating:</strong>
-  <%= @post.ratings.average(:rating) %>
 
 <%#= link_to 'New Comment', new_topic_post_comment_path %>
 

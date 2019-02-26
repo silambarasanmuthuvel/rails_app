@@ -18,9 +18,7 @@ class Ability
 
       can :manage, Comment,  user_id: user.id
       can :read, :all
-      can :update, Comment do |comment|
-        comment.user == user
-      end
+
       can :destroy, Comment do |comment|
         comment.user == user
       end

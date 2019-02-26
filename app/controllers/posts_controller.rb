@@ -7,14 +7,14 @@ class PostsController < ApplicationController
 
   def index
     if params[:topic_id].blank?
-      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
+      @posts = Post.all.paginate(page: params[:page], per_page: 10).includes(:topic ,:user )
     else
-      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5).includes(:user)
+      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 10).includes(:user)
     end
   end
 
   def show
-    @comments =@post.comments.all.includes(:user)
+    @comments =@post.comments.all.eager_load(:user)
     @comment = @post.comments.new
     @rating = @post.ratings.all
     @group_rating = @rating.order(:rating).group(:rating).count
@@ -88,7 +88,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag] )
+    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag], tags: :tag )
   end
 end
 

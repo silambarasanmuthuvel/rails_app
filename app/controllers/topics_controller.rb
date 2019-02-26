@@ -1,12 +1,15 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+   # protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
+  skip_before_action :verify_authenticity_token ,unless: -> { request.format.json? }
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @post = @topic.posts.includes(:user)
+    @post = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 10)
   end
 
 
@@ -23,7 +26,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created, location: @topic }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
@@ -60,6 +63,6 @@ class TopicsController < ApplicationController
   end
 
   def topic_params
-    params.require(:topic).permit(:name, :topic)
+    params.require(:topic).permit(:name)
   end
 end

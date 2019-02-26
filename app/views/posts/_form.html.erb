@@ -30,6 +30,8 @@
     <%= ff.text_area :tag %>
   <% end %>
 
+  <%= form.collection_select(:tags, Tag.all, :id, :tag, {}, {multiple: true}) %>
+
   <div class="actions">
     <%= form.submit(data: { disable_with: 'Saving!!!!!!!!' })
     %>
