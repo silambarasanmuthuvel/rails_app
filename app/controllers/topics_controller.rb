@@ -5,11 +5,11 @@ class TopicsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @topics = Topic.all.paginate(page: params[:page], per_page: 2)
+    @topics = Topic.all.paginate(page: params[:page], per_page: 10)
   end
 
   def show
-    @post = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 5)
+    @post = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 10)
   end
 
 

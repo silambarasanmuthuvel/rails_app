@@ -21,6 +21,13 @@ RSpec.describe CommentsController, type: :controller do
       get :new, params: {id:@comment.to_param,post_id:@post.id,topic_id:@topic.id}
       expect(response).to be_successful
     end
+    it "the name must be with proper credentials" do
+      expect{ post :create, params: { topic_id:1,post_id:1, comment: { commenter: "sad" ,body: "good boy",post_id:1,user_id: @user.id  } } }.to change{ Comment.all.count }.by(1)
+      expect(response).to redirect_to(topic_post_path(@topic.id,@post.id))
+      expect(flash[:notice]).to eq('Comment was successfully created.')
+      # expect(assigns(:comment).errors.present?).to be false
+    end
+
   end
 
   context 'GET #show' do
@@ -44,3 +51,6 @@ RSpec.describe CommentsController, type: :controller do
     end
   end
 end
+
+
+render json { posts: { id: @post.id, name: @post.name } }

@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b89556e-02c6-4298-b9d0-af54d686e65d" name="Default Changelist" comment="task 20 added the scope and displayed the post from date - to date">
-      <change afterPath="$PROJECT_DIR$/spec/support/factory_bot.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scaffold.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scaffold.iml" afterDir="false" />
+    <list default="true" id="9b89556e-02c6-4298-b9d0-af54d686e65d" name="Default Changelist" comment="task22 writtern rspec for controller and model">
+      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/device.coffee" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/device.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/device_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/device_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/controllers/device_controller_spec.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/helpers/device_helper_spec.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/comment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/post.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/comments/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/posts/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/posts/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/topics/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/topics/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/controllers/comments_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/comments_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/controllers/posts_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/posts_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/controllers/tags_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/tags_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/controllers/topics_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/topics_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/helpers/tags_helper_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/helpers/tags_helper_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/comments_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/comments_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/post_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/post_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/rating_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/rating_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/tag_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/tag_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/user_comment_rating_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/user_comment_rating_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/models/user_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/models/user_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/rails_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/requests/tags_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/requests/tags_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/topics_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/topics_controller.rb" afterDir="false" />
+    <list default="true" id="9b89556e-02c6-4298-b9d0-af54d686e65d" name="Default Changelist" comment="task 20 added the scope and displayed the post from date - to date">
+      <change afterPath="$PROJECT_DIR$/spec/controllers/device_controller_spec.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -76,8 +58,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/controllers/topics_controller_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+            <state relative-caret-position="120">
+              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+            <state relative-caret-position="600">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -95,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/topics_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="65" lean-forward="true" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
+              <caret line="7" column="65" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -642,7 +626,8 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="441227000" />
+    <option name="totallyTimeSpent" value="444601000" />
+    <option name="totallyTimeSpent" value="441330000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1031,10 +1016,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/topic.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/comments_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ratings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="105" selection-start-line="9" selection-start-column="105" selection-end-line="9" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/posts/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_nav.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user_comment_rating.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/device_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/device.coffee">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/topics_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+        <state relative-caret-position="45">
+          <caret line="3" column="121" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        <state relative-caret-position="600">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
