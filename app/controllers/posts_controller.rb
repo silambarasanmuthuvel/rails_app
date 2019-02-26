@@ -5,43 +5,13 @@ class PostsController < ApplicationController
   # before_action :authorize_resource, only: [:update, :destroy, :edit ]
   load_and_authorize_resource except: [:read_status , :index , :show]
 
-  def index
-    if params[:topic_id].blank?
-      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
-    else
-      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5).includes(:user)
-    end
-  end
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-  def filter
-     if params[:date_to] < params[:date_from]
-       respond_to do |format|
-         format.html
-         format.js
-       end
-     else
-        @sp= Post.all.paginate(page: params[:page], per_page: 5).overlapping(params[:date_from],params[:date_to])
-        respond_to do |format|
-          format.html
-          format.js
-        end
-      end
-  end
-
-  def show
-    @comments =@post.comments.all.eager_load(:user)
-    @comment = @post.comments.new
-    @rating = @post.ratings.all
-    @group_rating = @rating.order(:rating).group(:rating).count
-    @tag=Tag.all
-  end
-
-  def new
-    @post = @topic.posts.new
-  end
-
-  def edit
-  end
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
 
   def create
     @post = @topic.posts.create(post_params.merge(user_id: current_user.id))
