@@ -46,11 +46,23 @@ RSpec.describe TopicsController, type: :controller do
     expect(response).to redirect_to(topic_path(assigns(:topic)))
     expect(flash[:notice]).to eql('Topic was successfully created.')
   end
+  it "is json name for topic" do
+    post :create, params: { topic: { name: "ashwin" }  }, :format => :json
+    expect(response.status).to eql(200)
+    expect(json_body.keys).to match(["topic"])
+    expect(json_body).to match({"topic"=>{"id"=>2, "name"=>"ashwin"}})
+  end
 
   context 'DELETE #Destroy' do
     it 'returns sucess ' do
       delete :destroy, params: {id:@topic.to_param}
       expect(response).to redirect_to(topics_path)
+    end
+    it "is json name for topic" do
+      delete :destroy, params: {id:@topic.to_param},:format => :json
+      expect(response.status).to eql(200)
+      expect(json_body.keys).to match(["message"])
+      expect(json_body).to match({"message" => "Topic was successfully destroyed."})
     end
   end
 end

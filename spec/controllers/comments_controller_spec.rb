@@ -52,5 +52,3 @@ RSpec.describe CommentsController, type: :controller do
   end
 end
 
-
-render json { posts: { id: @post.id, name: @post.name } }
