@@ -17,6 +17,17 @@ class RatingsController < ApplicationController
     #   redirect_to topic_path
   end
 
+  def destroy
+    @rating = Rating.find(params[:id])
+    puts "!!!!!!!!!!!!!!!!!"
+    if @rating.destroy
+      format.html { redirect_to topic_post_path(params[:topic_id],params[:post_id]), notice: 'Rating was successfully destroyed.' }
+      format.json { head :no_content }
+    else
+      format.json { render json: @rating.errors, status: :unprocessable_entity }
+    end
+  end
+
     private
 
     def set_post

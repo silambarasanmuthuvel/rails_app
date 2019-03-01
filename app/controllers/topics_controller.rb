@@ -1,11 +1,13 @@
+
+
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-   # protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
+  # protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
   skip_before_action :verify_authenticity_token
 
   def index
-    @topics = Topic.all.paginate(page: params[:page], per_page: 10)
+    @topics = Topic.pluck(:id, :name).paginate(page: params[:page], per_page: 10)
   end
 
   def show

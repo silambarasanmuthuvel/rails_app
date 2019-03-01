@@ -10,7 +10,7 @@
     <td><%= link_to 'Edit', topic_post_path(post.topic_id,post) , class: "btn btn-primary" %></td>
   <% end %>
   <% if can? :destroy , post %>
-    <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', topic_post_path(post.topic_id,post), method: :delete,remote: true, class: "btn btn-destroy", data: { confirm: 'Are you sure?' } %></td>
   <% end %>
   <td><%= link_to 'comments', topic_post_comments_path(post.topic_id,post) , class: "btn btn-primary" %></td>
   </h5>

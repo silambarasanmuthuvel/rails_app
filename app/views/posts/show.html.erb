@@ -11,9 +11,9 @@
       </p>
 
       <% if can? :update, @post %>
-        <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_topic_post_path%> </button>
+        <%= link_to 'Edit', edit_topic_post_path, class:"btn btn-danger" %> </button>
       <% end %>
-      <button type="button" class="btn btn-warning"><%= link_to 'Back', topic_posts_path %></button>
+      <%= link_to 'Back', topic_posts_path,class: "btn btn-warning" %></button>
     </div>
   </div>
 
@@ -106,7 +106,6 @@
         $.ajax({
             method: "GET",
             url: '/topics/' + $('#topic_id').val() + '/posts/' + $('#post_id').val() + '/readstatus'
-
         })
     });
 </script>

@@ -10,5 +10,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :user_comment_ratings
   has_many :comments, through: :user_comment_ratings
-  has_one :ratings, through: :user_comment_ratings
+  has_many :ratings, through: :user_comment_ratings
 end

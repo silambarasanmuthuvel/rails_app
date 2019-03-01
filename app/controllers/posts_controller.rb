@@ -83,9 +83,11 @@ class PostsController < ApplicationController
       if @post.destroy
         format.html { redirect_to topic_posts_path, notice: 'Post was successfully destroyed.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js
       end
 
     end
