@@ -13,6 +13,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def form_display
+    if params[:date_to] < params[:date_from]
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      @sp= Post.all.paginate(page: params[:page], per_page: 5).date_of_post(params[:date_from],params[:date_to])
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
+  end
+
   def show
     @comments =@post.comments.all.eager_load(:user)
     @comment = @post.comments.new

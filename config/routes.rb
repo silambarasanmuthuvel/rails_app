@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :topics do
     collection do
-      get :filter , controller: :posts
+      get :form_display , controller: :posts
     end
     resources :posts do
       resources :comments
