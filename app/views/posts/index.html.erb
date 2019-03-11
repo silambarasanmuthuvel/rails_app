@@ -22,7 +22,7 @@
 
   <tbody>
   <% @posts.each do |post| %>
-        <%= render(partial: "posts/filter",locals: {post: post}) %>
+        <%= render(partial: "posts/form_display",locals: {post: post}) %>
 
   <% end %>
 
