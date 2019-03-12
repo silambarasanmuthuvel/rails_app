@@ -23,5 +23,5 @@ RSpec.describe Topic, type: :model do
         subject
         expect(Topic.all.count).to eq(1)
       end
-    end
+      end
   end

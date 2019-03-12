@@ -36,7 +36,7 @@
   <% end %>
   <br>
   <strong>AVG Rating:</strong>
-  <%= @post.ratings.average(:rating).truncate(!) %>
+  <%= @post.ratings.average(:rating).truncate(1) %>
 
   <h1>Comments</h1>
 

@@ -1,4 +1,4 @@
-require 'rails_helper'
+silambarasansilambarasan007@gmail.comrequire 'rails_helper'
 
 RSpec.describe Tag, type: :model do
   subject{ described_class.create!(tag:"new")}
