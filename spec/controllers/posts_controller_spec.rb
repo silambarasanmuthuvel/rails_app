@@ -6,7 +6,7 @@ RSpec.describe PostsController, type: :controller do
     sign_in @user
     @topic = Topic.create!(name:"sam")
 
-    @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal",topic_id:1,user_id: @user.id)
+    @post = @topic.posts.create!(title: "bay" ,body: "bay of bengal",topic_id: @topic.id,user_id: @user.id)
 
   }
   context 'GET #index' do

@@ -41,11 +41,6 @@ RSpec.describe TopicsController, type: :controller do
     expect(assigns(:topic).errors.present?).to be true
   end
 
-  it "is valid with name for topic" do
-    expect{ post :create, params: { topic: { name: "asdsada" } } }.to change{ Topic.all.count }.by(1)
-    expect(response).to redirect_to(topic_path(assigns(:topic)))
-    expect(flash[:notice]).to eql('Topic was successfully created.')
-  end
   it "is json name for topic" do
     post :create, params: { topic: { name: "ashwin" }  }, :format => :json
     expect(response.status).to eql(200)

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before{ Topic.create!(name:"21321")
+  before{ @topic = Topic.create!(name:"21321")
     User.create!(email:"abc@gmail.com",password:"123456")
   }
-  subject{ Post.create!(title:"dasd",body:"sdasdas",topic_id:1,user_id:1)}
+  subject{ @topic.posts.create!(title:"dasd",body:"sdasdas",topic_id:1,user_id:1)}
 
   describe "validaton" do
       it "is not valid with no attributes" do
