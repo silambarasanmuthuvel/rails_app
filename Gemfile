@@ -6,7 +6,6 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'bullet'
@@ -24,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 gem 'bootstrap'
-gem 'jquery-rails'
+gem 'jquery-rails'	
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'cancancan', '~> 2.0'
@@ -48,6 +47,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
   gem "factory_bot_rails"
+gem 'sqlite3', '~> 1.3.6'
   gem "letter_opener", :group => :development
 end
 
@@ -60,6 +60,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "figaro"
   gem 'sidekiq'
+end
+group :production do
+  gem 'pg'
 end
 
 group :test do
