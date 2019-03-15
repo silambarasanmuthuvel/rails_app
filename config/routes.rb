@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :tags
   resources :topics do
+    collection do
+      get :form_display , controller: :posts
+    end
     resources :posts do
       resources :comments
       resources :ratings

@@ -7,9 +7,24 @@ class PostsController < ApplicationController
 
   def index
     if params[:topic_id].blank?
-      @posts = Post.all.paginate(page: params[:page], per_page: 10).includes(:topic ,:user )
+      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
     else
-      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 10).includes(:user)
+      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5).includes(:user)
+    end
+  end
+
+  def form_display
+    if params[:date_to] < params[:date_from]
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    else
+      @sp= Post.all.paginate(page: params[:page], per_page: 5).date_of_post(params[:date_from],params[:date_to])
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
   end
 
