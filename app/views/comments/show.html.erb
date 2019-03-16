@@ -14,3 +14,5 @@
 <%end %>
 <%= link_to 'Edit', edit_topic_post_comment_path(params[:topic_id],params[:post_id],@comment) %> |
 <%= link_to 'Back', topic_post_comments_path(params[:topic_id],params[:post_id]) %>
+<td><%= link_to 'Destroy', topic_post_comment_path(params[:topic_id],params[:post_id],@comment) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+

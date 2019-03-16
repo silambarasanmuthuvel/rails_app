@@ -1,6 +1,6 @@
 $('#error_explanation').remove();
 <% if not @post.errors.any? %>
-  $('#new_post').remove();
+  $('#new_post').empty();
   $("#new_link").show();
   alert("post created sucessfully");
 <% else %>

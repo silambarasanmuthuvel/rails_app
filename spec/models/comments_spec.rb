@@ -26,7 +26,7 @@ RSpec.describe Comment, type: :model do
   describe "comment destory" do
     it " vaildate the destroy topic function" do
       subject
-      expect{ subject.destroy }.to change { Comment.count }
+      expect{ subject.destroy }.to change { Comment.count }.by(-1)
     end
   end
   describe "comment create" do

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
+      member do
+        get :readstatus
+      end
       resources :comments
       resources :ratings
     end
@@ -16,7 +19,7 @@ Rails.application.routes.draw do
 
   get "/posts", to: 'posts#index'
   root "topics#index"
-  get '/topics/:topic_id/posts/:id/readstatus' => 'posts#readstatus'
+  # get '/topics/:topic_id/posts/:id/readstatus' => 'posts#readstatus'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #header for sign in
   get "/user", to: "application#authenticate"

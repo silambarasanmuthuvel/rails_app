@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Rating, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
 
   before{
     @topic = Topic.create(name:"topic")
@@ -16,6 +15,12 @@ RSpec.describe Rating, type: :model do
     it "Invaild without rating" do
       subject.rating =nil
       expect(subject).not_to be_valid
+    end
+  end
+  describe "Rating destory" do
+    it " vaildate the destroy function" do
+      subject
+      expect{ subject.destroy }.to change { Rating.count }.by(-1)
     end
   end
 end

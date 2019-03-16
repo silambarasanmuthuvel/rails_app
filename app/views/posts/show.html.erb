@@ -13,7 +13,7 @@
       <% if can? :update, @post %>
         <%= link_to 'Edit', edit_topic_post_path, class:"btn btn-danger" %> </button>
       <% end %>
-      <%= link_to 'Back', topic_posts_path,class: "btn btn-warning" %></button>
+      <%= link_to 'Back',"javascript:history.back()",class: "btn btn-warning" %></button>
     </div>
   </div>
 
@@ -36,8 +36,11 @@
   <% end %>
   <br>
   <strong>AVG Rating:</strong>
+  <% if @post.ratings.present? %>
   <%= @post.ratings.average(:rating).truncate(1) %>
-
+<% else %>
+    0
+    <% end %>
   <h1>Comments</h1>
 
   <table>
@@ -106,6 +109,7 @@
         $.ajax({
             method: "GET",
             url: '/topics/' + $('#topic_id').val() + '/posts/' + $('#post_id').val() + '/readstatus'
+            // url: '/topics/' + $('#topic_id').val() + '/posts/readstatus'
         })
     });
 </script>

@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
-  has_many :user_comment_ratings
+  has_many :user_comment_ratings,dependent: :destroy
   has_many :ratings, through: :user_comment_ratings, source: :rating
   has_many :users, through: :user_comment_ratings , source: :user
 

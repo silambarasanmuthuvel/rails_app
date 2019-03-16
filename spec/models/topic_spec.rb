@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
 
-    subject{Topic.create!(name:"sam") }
+    subject{Topic.create!(name: "sas") }
     describe "validation" do
       it "vaild with the topic" do
         expect(subject).to be_valid
@@ -15,7 +15,7 @@ RSpec.describe Topic, type: :model do
     describe "topic destory" do
       it " vaildate the destroy topic function" do
         subject
-        expect{subject.destroy}.to change{ Topic.count }
+        expect{subject.destroy}.to change{ Topic.count }.by(-1)
       end
     end
     describe "post create" do

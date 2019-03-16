@@ -7,6 +7,7 @@
 
 <table id="xzy"></table>
 <div id ="paginate"></div>
+<div id="new_post"></div>
 <div id="exist">
 <%  if !params[:topic_id].blank? %>
   <%= link_to 'New_Post',  new_topic_post_path(params[:topic_id]) , remote:  true ,id: "new_link",  class: "btn btn-danger" %>
