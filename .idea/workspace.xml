@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b89556e-02c6-4298-b9d0-af54d686e65d" name="Default Changelist" comment="task 16 inclusion of unread statement">
-      <change afterPath="$PROJECT_DIR$/app/controllers/device_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/topics_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/topics_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/post.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/posts/_form_display.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/_form_display.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/posts/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/index.html.erb" afterDir="false" />
-    </list>
+    <list default="true" id="9b89556e-02c6-4298-b9d0-af54d686e65d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/log/" />
@@ -194,6 +183,7 @@
     <option name="width" value="589" />
     <option name="height" value="636" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -443,7 +433,7 @@
       <workItem from="1550493474835" duration="2363000" />
       <workItem from="1550547983715" duration="5671000" />
       <workItem from="1550560191290" duration="2820000" />
-      <workItem from="1552729990878" duration="250000" />
+      <workItem from="1552729990878" duration="533000" />
     </task>
     <task id="LOCAL-00001" summary="task 10 added rating to the post and specified the number of rating for each button">
       <created>1548929295237</created>
@@ -564,11 +554,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550149046431</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="resolved conflicts on  task 27">
+      <created>1552730279507</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1552730279507</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="381457000" />
+    <option name="totallyTimeSpent" value="381740000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -582,7 +579,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info anchor="top" id="Event Log" order="0" sideWeight="0.50438946" side_tool="true" visible="true" weight="0.36548224" />
+      <window_info anchor="top" id="Event Log" order="0" sideWeight="0.50438946" side_tool="true" weight="0.36548224" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496" visible="true" weight="0.27134877" />
       <window_info id="Structure" order="1" sideWeight="0.504" side_tool="true" weight="0.22266561" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32960895" />
@@ -595,9 +592,9 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49960095" weight="0.32899022" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" sideWeight="0.49960095" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.24740623" visible="true" weight="0.41285956" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.24740623" visible="true" weight="0.41285956" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32867134" />
-      <window_info anchor="bottom" content_ui="combo" id="Terminal" order="11" sideWeight="0.75259376" side_tool="true" visible="true" weight="0.41285956" />
+      <window_info active="true" anchor="bottom" content_ui="combo" id="Terminal" order="11" sideWeight="0.75259376" side_tool="true" visible="true" weight="0.41285956" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -683,7 +680,8 @@
     <MESSAGE value="task 16 inclusion of unread statement" />
     <MESSAGE value="task 17 inclusion of headers to sign in" />
     <MESSAGE value="task 18 and task 19 &#10;created the http get request to enter the values &#10;implemented rating for comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="task 18 and task 19 &#10;created the http get request to enter the values &#10;implemented rating for comments" />
+    <MESSAGE value="resolved conflicts on  task 27" />
+    <option name="LAST_COMMIT_MESSAGE" value="resolved conflicts on  task 27" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
