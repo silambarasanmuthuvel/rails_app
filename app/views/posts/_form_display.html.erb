@@ -1,6 +1,6 @@
 <tbody>
 <td><h4><%= post.title %> (<%= post.topic .name %>)</h4>
-  <% if post.users.include?(current_user) %>
+  <% if current_user.posts.include?(post) %>
     <p style="color:lawngreen;">read </p>
   <% else %>
     <p style="color:orangered;">unread</p>

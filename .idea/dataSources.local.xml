@@ -9,8 +9,5 @@
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
       <auth-required>false</auth-required>
     </data-source>
-    <data-source name="Rails scaffold: test" uuid="3743d0f8-1850-4d11-82bb-30b96ca04b7b">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-    </data-source>
   </component>
 </project>

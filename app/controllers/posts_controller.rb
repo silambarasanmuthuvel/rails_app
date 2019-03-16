@@ -7,25 +7,25 @@ class PostsController < ApplicationController
 
   def index
     if params[:topic_id].blank?
-      @posts = Post.all.includes(:topic ,:user).paginate(page: params[:page], per_page: 10)
+      @posts = Post.all.paginate(page: params[:page], per_page: 5).includes(:topic ,:user )
     else
-      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 10).includes(:users, :user)
+      @posts = @topic.posts.all.paginate(page: params[:page], per_page: 5).includes(:user)
     end
   end
 
   def form_display
-     if params[:date_to] < params[:date_from]
-       respond_to do |format|
-         format.html
-         format.js
-       end
-     else
-        @sp= Post.all.paginate(page: params[:page], per_page: 5).overlapping(params[:date_from],params[:date_to])
-        respond_to do |format|
-          format.html
-          format.js
-        end
+    if params[:date_to] < params[:date_from]
+      respond_to do |format|
+        format.html
+        format.js
       end
+    else
+      @sp= Post.all.paginate(page: params[:page], per_page: 5).date_of_post(params[:date_from],params[:date_to])
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
   end
 
   def show
@@ -83,11 +83,9 @@ class PostsController < ApplicationController
       if @post.destroy
         format.html { redirect_to topic_posts_path, notice: 'Post was successfully destroyed.' }
         format.json { head :no_content }
-        format.js
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
-        format.js
       end
 
     end
@@ -105,7 +103,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title,:body,:image, tag_ids: [],tags_attributes: [:tag])
+    params.require(:post).permit(:title ,:body ,:image , tags_attributes: [:tag], tags: :tag )
   end
 end
 

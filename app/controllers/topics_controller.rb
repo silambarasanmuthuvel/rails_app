@@ -1,17 +1,15 @@
-
-
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  # protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
-  skip_before_action :verify_authenticity_token ,unless: -> { request.format.json? }
+   # protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format =~ %r{application/json} }
+  skip_before_action :verify_authenticity_token
 
   def index
-    @topics = Topic.pluck(:id, :name).paginate(page: params[:page], per_page: 10)
+    @topics = Topic.all.paginate(page: params[:page], per_page: 2)
   end
 
   def show
-    @post = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 10)
+    @post = @topic.posts.includes(:user).paginate(page: params[:page], per_page: 5)
   end
 
 
@@ -27,9 +25,8 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-         EmailWorker.perform_async(current_user.id,@topic.id)
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render json: { topic: {id: @topic.id, name:@topic.name } }, status: :ok }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
